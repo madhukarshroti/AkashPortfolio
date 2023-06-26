@@ -1,0 +1,19 @@
+from django.contrib import admin
+from django.urls import path,include
+from PortFolio import views
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+
+admin.site.site_header="Akash Login Method"
+admin.site.site_title="Warning || Madhukar's Panel"
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('project-detail/<int:myid>', views.ProjectHandle, name='ProjectHandle'),
+    path('', views.index, name='index'),
+    
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
